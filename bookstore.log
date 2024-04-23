@@ -2,3 +2,8 @@
 1713252303614:create book --title Valami --author Valaki --publisher Kiado --price 501
 1713252328626:create a book --title Valami --author Valaki --publisher Kiado --price 501
 1713252774995:list books
+1713854266869:delete book --id 3
+1713854269204:list books
+1713855121597:update book 2 title author publisher price
+1713855131446:update book 2 title author publisher 200
+1713855136725:list books
