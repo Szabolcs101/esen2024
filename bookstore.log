@@ -7,3 +7,13 @@
 1713855121597:update book 2 title author publisher price
 1713855131446:update book 2 title author publisher 200
 1713855136725:list books
+1714458973038:update a bookstore 1 --location asd
+1714458982267:updates a bookstore 1 --location asd
+1714459029004:updates bookstore 1 --location avfda
+1714459035426:list --bookstore
+1714459039538:list bookstores
+1714460465112:find prices 1
+1714461265241:get stock --id 2
+1714462153772:get stock 1
+1714462161259:add stock 1 1 100
+1714462219909:add stock 1 1 10
