@@ -89,13 +89,13 @@ public class BookstoreService {
 
         if(bookstore.getInventory().containsKey(book)){
             var entry = bookstore.getInventory().get(book);
-            if(entry + amount != 0){
+            if(entry + amount < 0){
                 throw new UnsupportedOperationException("Invalid amount");
             }
             bookstore.getInventory().replace(book, entry + amount);
         }
         else {
-            if(amount < 0) {
+            if(amount < 1) {
                 throw new UnsupportedOperationException("Invalid amount");
             }
             bookstore.getInventory().put(book, amount);
