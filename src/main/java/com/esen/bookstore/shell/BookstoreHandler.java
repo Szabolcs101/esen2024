@@ -37,28 +37,28 @@ public class BookstoreHandler {
         bookstoreService.deleteBookstore(id);
     }
 
-    @ShellMethod(key = "update bookstore", value = "update bookstore")
+    @ShellMethod(key = "update bookstore", value = "Updates bookstore")
     public void updateBookstore(Long id,
-                                @ShellOption(defaultValue = ShellOption.NULL)String location,
-                                @ShellOption(defaultValue = ShellOption.NULL)Double priceModifier,
-                                @ShellOption(defaultValue = ShellOption.NULL)Double moneyInCashRegister){
+                                @ShellOption(defaultValue = ShellOption.NULL) String location,
+                                @ShellOption(defaultValue = ShellOption.NULL) Double priceModifier,
+                                @ShellOption(defaultValue = ShellOption.NULL) Double moneyInCashRegister) {
         bookstoreService.updateBookstore(id, location, priceModifier, moneyInCashRegister);
-
     }
 
     @ShellMethod(key = "get stock", value = "get stock")
     public String getStock(Long id) {
-        return bookstoreService.getStock(id).entrySet().stream()
-                .map(entry -> "Book ID: %d, Publisher: %s, Title: %s, Copies: %s".formatted(
+        return bookstoreService.getStock(id).entrySet()
+                .stream()
+                .map(entry -> "Book ID: %s, Author: %s, Title: %s - Copies: %s".formatted(
                         entry.getKey().getId(),
-                        entry.getKey().getPublisher(),
+                        entry.getKey().getAuthor(),
                         entry.getKey().getTitle(),
-                        entry.getValue()))
-                .collect(Collectors.joining(System.lineSeparator()));
+                        entry.getValue()
+                )).collect(Collectors.joining(System.lineSeparator()));
     }
 
-    @ShellMethod(value = "add stock", key = "add stock")
-    public void addStock(Long bookstoreId, Long bookId, int amount){
+    @ShellMethod(value = "Add stock", key = "add stock")
+    public void addStock(Long bookstoreId, Long bookId, int amount) {
         bookstoreService.changeStock(bookstoreId, bookId, amount);
     }
 }

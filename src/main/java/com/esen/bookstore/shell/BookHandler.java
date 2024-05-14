@@ -50,16 +50,16 @@ public class BookHandler {
         bookService.updateBook(id, title, author, publisher, price);
         }
 
-        @ShellMethod(value="find prices", key="find prices")
-        public String findPrices(Long bookId){
-            return bookstoreService.findPrices(bookId)
-                    .entrySet()
-                    .stream()
-                    .map(book -> "ID: %s, Location: %s, Price: %s Ft".formatted(
-                            book.getKey().getId(),
-                            book.getKey().getLocation(),
-                            book.getValue()
-                    )).collect(Collectors.joining(System.lineSeparator()));
-        }
+    @ShellMethod(value = "Find prices", key = "find prices")
+    public String findPrices(Long bookId) {
+        return bookstoreService.findPrices(bookId)
+                .entrySet()
+                .stream()
+                .map(entry -> "Bookstore ID: %d, Location: %s, Price: %s Ft".formatted(
+                        entry.getKey().getId(),
+                        entry.getKey().getLocation(),
+                        entry.getValue()
+                )).collect(Collectors.joining(System.lineSeparator()));
+    }
 
 }
